@@ -27,7 +27,8 @@ var disp =document.createElement("div");
 async function startfu() {
     
     let num= document.getElementById("thiru").value;
-    if(0<num<1331){
+    let numvalue=parseInt(num);
+  try{
         let res = await fetch(`https://api-thirukkural.vercel.app/api?num=${num}`);
         let res1 = await res.json();
         
@@ -36,8 +37,10 @@ async function startfu() {
         <span class="fw-bold fs-3 bg-info-subtle">${res1.line2}</span><br><br><br>
         <span class="fw-bold fs-5 ">Tamil meaning :   ${res1.tam_exp}</span><br><br>
         <span class="fw-bold fs-5">English meaning :  ${res1.eng_exp}</span><br>` ;
-    }else{
-        disp.innerHTML=   `<span>Thirukkural Number :${num} is not valid number</span><br><br>`;
+    }catch{
+        disp.innerHTML=`<span>Thirukkural Number :${num} is not valid number</span><br><br>`;
+      
+      
     }
 
   
